@@ -1,0 +1,26 @@
+---
+title: Home
+layout: layouts/base.njk
+---
+
+<aside>
+    <h2><a href="about" style="text-decoration:none; color: inherit">About me</a></h2>
+    <img style="max-width: 250px;" src="images/Seongjoo.jpg" alt="My Photo">
+</aside>
+<section>
+    <h2>Latest posts</h2>
+    <div> 
+        {% for post in collections.post | reverse %}
+            {% if loop.index0 < 3 %}
+                <h3 style="display: inline-block;">{{ post.data.title }}</h3>
+                <p style="display: inline-block;" class="date">
+                  &nbsp; <time datetime="{{ page.date }}">{{ post.data.date | readableDate }}</time>
+                </p>
+                <p style="margin-top:6px; margin-bottom:6px;">{{ post.data.description }}</p>
+                <a href="{{ post.url }}">Read more</a>  
+                <br>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

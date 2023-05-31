@@ -1,0 +1,17 @@
+---
+title: Posts
+layout: layouts/base.njk
+---
+
+<div> 
+    {% for post in collections.post | reverse %}
+        <h3 style="display: inline-block;">{{ post.data.title }}</h3>
+        <p style="display: inline-block;" class="date">
+            &nbsp; <time datetime="{{ page.date }}">{{ post.data.date | readableDate }}</time>
+        </p>
+        <p style="margin-top:6px; margin-bottom:6px;">{{ post.data.description }}</p>
+        <a href="{{ post.url }}">Read more</a>  
+        <br>
+        <br>
+    {% endfor %}
+</div>
