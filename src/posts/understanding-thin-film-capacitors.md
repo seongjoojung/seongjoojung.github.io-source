@@ -14,13 +14,13 @@ Understanding Thin Film Capacitors
 
 
 <play-ground>
-  <div>
+  <divs>
     <form>
         <div style="display: grid;">
             <label for="a" id="aText">
-            a: 1
+            a: 0.5
             </label>
-            <input id="a" type="range" min="1" max="10" step="0.1" aria-label="a" value="1" oninput="result()">
+            <input id="a" type="range" min="0.1" max="10" step="0.1" aria-label="a" value="0.5" oninput="result()">
         </div>
         <div style="display: grid;">
             <label for="b" id="bText">
@@ -31,9 +31,9 @@ Understanding Thin Film Capacitors
     </form>
   </div>
 
-  <div>
-    <canvas id="myChart" style="width:100%;"></canvas>
-</div>
+  <div style="width:100%; height:400px;">
+    <canvas id="myChart" style="width:90%; height:400px"></canvas>
+  </div>
 </play-ground>
 
 
@@ -44,9 +44,8 @@ Understanding Thin Film Capacitors
 
   const ctx = document.getElementById('myChart');
 
-  const xValues = [];
-  const yValues = [];
-  generateData("x * 2 + 7", 0, 10, 0.5);
+  const xyValues = [];
+  generateData("x * 2 + 7", 0, 100, 100);
 
   
   var aText = document.getElementById("aText");
@@ -55,25 +54,34 @@ Understanding Thin Film Capacitors
   myChart = new Chart(ctx, {
     type: "line",
     data: {
-      labels: xValues,
       datasets: [{
+        label: "test",
         fill: false,
         pointRadius: 0,
         borderColor: "rgba(255,0,0,0.5)",
-        data: yValues
+        data: xyValues
       }]
     },
     options: {
-
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          suggestedMin: 0,
+          suggestedMax: 100
+        },
+        y: {
+          suggestedMin: 0,
+          suggestedMax: 100
+        }
+      }
     }
   });
 
-  function generateData(value, i1, i2, step = 1) {
-    xValues.length = 0;
-    yValues.length = 0;
-    for (let x = i1; x <= i2; x += step) {
-      yValues.push(eval(value));
-      xValues.push(x);
+  function generateData(value, i1, i2, num = 100) {
+    xyValues.length = 0;
+    for (let x = i1; x <= i2; x += (i2 - i1)/num) {
+      xyValues.push({x:x,y:eval(value)});
     }
   }
 
@@ -83,9 +91,8 @@ Understanding Thin Film Capacitors
     if (!isNaN(a)) {
       aText.innerHTML = "a: " + a; 
       bText.innerHTML = "b: " + b;
-      generateData("x * " + a + " + " + b, 0, 10, 1);
-      myChart.data.labels = xValues;
-      myChart.data.datasets[0].data = yValues;
+      generateData("x * " + a + " + " + b, 0, 100, 100);
+      myChart.data.datasets[0].data = xyValues;
       myChart.update('none');
     }
     else
@@ -95,6 +102,5 @@ Understanding Thin Film Capacitors
 
 
 
-And finally, represent the resulting position data in the playground:
 
 <SpringPhysics withDamping />
