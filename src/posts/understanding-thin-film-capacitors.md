@@ -31,8 +31,8 @@ Understanding Thin Film Capacitors
     </form>
   </div>
 
-  <div style="width:100%; height:400px;">
-    <canvas id="myChart" style="width:90%; height:400px"></canvas>
+  <div >
+    <canvas id="myChart" style="width: 90%; height: 300px;"></canvas>
   </div>
 </play-ground>
 
@@ -50,6 +50,9 @@ Understanding Thin Film Capacitors
   
   var aText = document.getElementById("aText");
   var bText = document.getElementById("bText");
+
+
+
 
   myChart = new Chart(ctx, {
     type: "line",
@@ -77,6 +80,17 @@ Understanding Thin Film Capacitors
       }
     }
   });
+
+  
+  /*
+  myChart.options.scales['x'].display = false; //global visibility
+  myChart.options.scales['y'].display = false; 
+  myChart.options.scales['x'].grid.display = false; //grid visibility
+  myChart.options.scales['y'].grid.display = false; 
+  myChart.options.scales['y'].ticks.display = false; //ticks visibility
+  myChart.options.scales['x'].ticks.display = false;
+  */
+  myChart.update('none');
 
   function generateData(value, i1, i2, num = 100) {
     xyValues.length = 0;
