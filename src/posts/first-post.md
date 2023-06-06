@@ -1,6 +1,6 @@
 ---
 title: First Post
-description: This is the first post of the blog, which I hope to keep up and use it to communicate.
+description: The first post of my blog
 tags: post
 date: 2023-05-31
 layout: layouts/post.njk

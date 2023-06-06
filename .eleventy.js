@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/images/");
     eleventyConfig.addPassthroughCopy("./src/pdfs/");
     eleventyConfig.addWatchTarget("./src/pdfs/");
+    eleventyConfig.addPassthroughCopy("./src/js/");
+    eleventyConfig.addWatchTarget("./src/js/");
 
     eleventyConfig.addFilter('readableDate', (dateObj) => {
         return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
