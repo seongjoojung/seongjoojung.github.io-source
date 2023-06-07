@@ -73,7 +73,12 @@ function generateData_series(V, l, chi, lambda, Ps, n = 100) {
   i1 = x1 - electrodeLength;
   i2 = x2 + electrodeLength;
   
-  a = 2*lambda*(1-Math.exp(-l/lambda));
+  if (lambda >= 0) {
+    a = 2*lambda;
+  } else {
+    a = -2*lambda;
+  }
+  
   D = 1/(a*(1+chi)+l)*((1+chi)*vac_permittivity*V + l*Ps);
   E = 1/(a*(1+chi)+l)*(V - a/vac_permittivity*Ps);
 

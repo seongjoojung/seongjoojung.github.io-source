@@ -17,7 +17,7 @@ const insulator_D = [];
 const rightElectrode_D = [];
 
 //Constants
-const nData = 250;
+const nData = 200;
 const vac_permittivity = 8.854*10**-2; //F*Angst/m^2
 const electrodeLength = 20; //Angst
 
@@ -40,6 +40,7 @@ electricChart = new Chart(ctx1, config("Electric field (V/\u212B)", -0.5, 0.5));
 addData(electricChart,leftElectrode_E);
 addData(electricChart,insulator_E);
 addData(electricChart,rightElectrode_E);
+addText(electricChart,"P");
 
 potentialChart = new Chart(ctx2, config("Electric potential (V)", -10, 10))
 addData(potentialChart,leftElectrode_V);
@@ -114,7 +115,7 @@ function config(yLabel = "", yMin = -1, yMax = 1) {
               xMax: rightElectrode_E[0].x,
               yMin: -15,
               yMax: 15,
-              backgroundColor: 'rgba(255, 99, 132, 0.25)'
+              backgroundColor: 'rgba(0, 0, 0, 0.25)'
             },
             box3: {
               type: 'box',
@@ -124,7 +125,7 @@ function config(yLabel = "", yMin = -1, yMax = 1) {
               yMin: -15,
               yMax: 15,
               backgroundColor: 'rgba(120, 120, 120, 0.25)'
-            }
+            },
           }
         }
       }
@@ -137,9 +138,22 @@ function config(yLabel = "", yMin = -1, yMax = 1) {
 function addData(chart, dataToPush) {
   chart.data.datasets.push({
     pointRadius: 0,
-    borderColor: "rgba(255,0,0,0.5)",
+    borderWidth: 2,
+    borderColor: "rgba(255,0,0,1)",
     data: dataToPush
   })
+};
+
+function addText(chart, textToPush) {
+  chart.options.plugins.annotation.annotations.text1 = {
+    type: 'label',
+    xValue: 0,
+    yValue: chart.scales['y'].max,
+    content: [textToPush],
+    font: {
+      size: 16
+    }
+  }
 };
 
 function generateData(V, l, chi, Ps, num = 100) {
@@ -154,11 +168,12 @@ function generateData(V, l, chi, Ps, num = 100) {
   insulator_D.length = 0;
   rightElectrode_D.length = 0;
 
-  x1 = -l/2;
-  x2 = l/2;
-  i1 = x1 - electrodeLength;
-  i2 = x2 + electrodeLength;
-  E = V/l;
+  let x1 = -l/2;
+  let x2 = l/2;
+  let i1 = x1 - electrodeLength;
+  let i2 = x2 + electrodeLength;
+  let E = V/l;
+  let P = chi*E + Ps;
 
   for (let x = i1; x <= x1; x += (i2 - i1)/num) {
     leftElectrode_E.push({x:x, y: 0});
@@ -180,12 +195,12 @@ function generateData(V, l, chi, Ps, num = 100) {
 };
 
 function updateBoxes(chart) {
-  chart.options.plugins.annotation.annotations.box1.xMin = insulator_E_TF[0].x - electrodeLength;
-  chart.options.plugins.annotation.annotations.box1.xMax = insulator_E_TF[0].x;
-  chart.options.plugins.annotation.annotations.box2.xMin = insulator_E_TF[0].x;
-  chart.options.plugins.annotation.annotations.box2.xMax = rightElectrode_E_TF[0].x;
-  chart.options.plugins.annotation.annotations.box3.xMin = rightElectrode_E_TF[0].x;
-  chart.options.plugins.annotation.annotations.box3.xMax = rightElectrode_E_TF[0].x + electrodeLength;
+  chart.options.plugins.annotation.annotations.box1.xMin = chart.data.datasets[1].data[0].x - electrodeLength;
+  chart.options.plugins.annotation.annotations.box1.xMax = chart.data.datasets[1].data[0].x;
+  chart.options.plugins.annotation.annotations.box2.xMin = chart.data.datasets[1].data[0].x;
+  chart.options.plugins.annotation.annotations.box2.xMax = chart.data.datasets[2].data[0].x;
+  chart.options.plugins.annotation.annotations.box3.xMin = chart.data.datasets[2].data[0].x;
+  chart.options.plugins.annotation.annotations.box3.xMax = chart.data.datasets[2].data[0].x + electrodeLength;
 };
 
 function result(){
