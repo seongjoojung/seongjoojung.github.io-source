@@ -1,5 +1,5 @@
 ---
-title: Understanding (Ferroelectric) Thin Film Capacitors
+title: Understanding Thin Film (Ferroelectric) Capacitors
 description: Interactive explanation about depolarization fields in capacitors
 tags: post
 date: 2023-06-05
@@ -19,9 +19,9 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="l" id="lText">
-            Length: 80 &#8491;
+            Length: 100 &#8491;
             </label>
-            <input id="l" type="range" min="10" max="500" step="10" value="80" oninput="result()">
+            <input id="l" type="range" min="10" max="500" step="10" value="100" oninput="result()">
         </div>
         <div style="display: grid;">
             <label for="chi" id="chiText">
@@ -63,9 +63,9 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="l_TF" id="lText_TF">
-            Length: 80 &#8491;
+            Length: 100 &#8491;
             </label>
-            <input id="l_TF" type="range" min="10" max="500" step="10" value="80" oninput="result_TF()">
+            <input id="l_TF" type="range" min="10" max="500" step="10" value="100" oninput="result_TF()">
         </div>
         <div style="display: grid;">
             <label for="chi_TF" id="chiText_TF">
@@ -113,9 +113,9 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="l_series" id="lText_series">
-            Length: 80 &#8491;
+            Length: 100 &#8491;
             </label>
-            <input id="l_series" type="range" min="10" max="500" step="10" value="80" oninput="result_series()">
+            <input id="l_series" type="range" min="10" max="500" step="10" value="100" oninput="result_series()">
         </div>
         <div style="display: grid;">
             <label for="chi_series" id="chiText_series">
