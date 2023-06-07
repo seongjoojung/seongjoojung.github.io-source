@@ -31,6 +31,7 @@ let VText = document.getElementById("VText");
 let lText = document.getElementById("lText");
 let chiText = document.getElementById("chiText");
 let PsText = document.getElementById("PsText");
+let PText = document.getElementById("PText");
 
 //generate data
 generateData(Number(V), Number(l), Number(chi), Number(Ps), nData);
@@ -40,7 +41,6 @@ electricChart = new Chart(ctx1, config("Electric field (V/\u212B)", -0.5, 0.5));
 addData(electricChart,leftElectrode_E);
 addData(electricChart,insulator_E);
 addData(electricChart,rightElectrode_E);
-addText(electricChart,"P");
 
 potentialChart = new Chart(ctx2, config("Electric potential (V)", -10, 10))
 addData(potentialChart,leftElectrode_V);
@@ -52,9 +52,9 @@ addData(displacementChart,leftElectrode_D);
 addData(displacementChart,insulator_D);
 addData(displacementChart,rightElectrode_D);
 
-electricChart.update('none');
-potentialChart.update('none');
-displacementChart.update('none');
+electricChart.update();
+potentialChart.update();
+displacementChart.update();
 
 //generate config
 function config(yLabel = "", yMin = -1, yMax = 1) {
@@ -76,8 +76,8 @@ function config(yLabel = "", yMin = -1, yMax = 1) {
           grid: {
             display: false
           },
-          suggestedMin: -100,
-          suggestedMax: 100,
+          //suggestedMin: -100,
+          //suggestedMax: 100,
         },
         y: {
           suggestedMin: yMin,
@@ -144,18 +144,6 @@ function addData(chart, dataToPush) {
   })
 };
 
-function addText(chart, textToPush) {
-  chart.options.plugins.annotation.annotations.text1 = {
-    type: 'label',
-    xValue: 0,
-    yValue: chart.scales['y'].max,
-    content: [textToPush],
-    font: {
-      size: 16
-    }
-  }
-};
-
 function generateData(V, l, chi, Ps, num = 100) {
   //initialize arrays
   leftElectrode_E.length = 0;
@@ -192,15 +180,24 @@ function generateData(V, l, chi, Ps, num = 100) {
     rightElectrode_V.push({x:x, y: V/2});
     rightElectrode_D.push({x:x, y: 0});
   }
+
+  return P;
 };
 
-function updateBoxes(chart) {
+function updateBoxes(chart, P=0) {
   chart.options.plugins.annotation.annotations.box1.xMin = chart.data.datasets[1].data[0].x - electrodeLength;
   chart.options.plugins.annotation.annotations.box1.xMax = chart.data.datasets[1].data[0].x;
   chart.options.plugins.annotation.annotations.box2.xMin = chart.data.datasets[1].data[0].x;
   chart.options.plugins.annotation.annotations.box2.xMax = chart.data.datasets[2].data[0].x;
   chart.options.plugins.annotation.annotations.box3.xMin = chart.data.datasets[2].data[0].x;
   chart.options.plugins.annotation.annotations.box3.xMax = chart.data.datasets[2].data[0].x + electrodeLength;
+
+  if (P>0) {
+    chart.options.plugins.annotation.annotations.box2.backgroundColor = 'rgba(' + Math.floor(P*2*255) + ', 0, 0, 0.25)'
+  } else {
+    chart.options.plugins.annotation.annotations.box2.backgroundColor = 'rgba(0, 0, ' + Math.floor(-P*2*255) + ', 0.25)'
+  }
+  
 };
 
 function result(){
@@ -208,17 +205,17 @@ function result(){
   let l = document.getElementById("l").value;
   let chi = document.getElementById("chi").value;
   let Ps = document.getElementById("Ps").value;
+  let P = generateData(Number(V), Number(l), Number(chi), Number(Ps), nData)
 
   VText.innerHTML = "Voltage: " + V + " V"; 
   lText.innerHTML = "Length: " + l + " \u212B";
-  chiText.innerHTML = "Electric susceptibility: " + chi; 
-  PsText.innerHTML = "Spontaneous Polarization: " + Ps +" C/m<sup>2</sup>";
-  
-  generateData(Number(V), Number(l), Number(chi), Number(Ps), nData);
+  chiText.innerHTML = "Electric susceptibility: " + Number(chi).toFixed(1); 
+  PsText.innerHTML = "Spontaneous Polarization: " + Number(Ps).toFixed(2) +" C/m<sup>2</sup>";
+  PText.innerHTML = "P: " + P.toFixed(2) +" C/m<sup>2</sup>";
 
-  updateBoxes(electricChart);
-  updateBoxes(potentialChart);
-  updateBoxes(displacementChart);
+  updateBoxes(electricChart, P);
+  updateBoxes(potentialChart, P);
+  updateBoxes(displacementChart, P);
 
   electricChart.update('none');
   potentialChart.update('none');

@@ -2,7 +2,7 @@
 title: Understanding Thin Film (Ferroelectric) Capacitors
 description: Interactive explanation about depolarization fields in capacitors
 tags: post
-date: 2023-06-05
+date: 2023-06-07
 layout: layouts/post.njk
 ---
 
@@ -19,24 +19,27 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="l" id="lText">
-            Length: 100 &#8491;
+            Length: 80 &#8491;
             </label>
-            <input id="l" type="range" min="10" max="500" step="10" value="100" oninput="result()">
+            <input id="l" type="range" min="10" max="500" step="10" value="80" oninput="result()">
         </div>
         <div style="display: grid;">
             <label for="chi" id="chiText">
-            Electric susceptibility: 1
+            Electric susceptibility: 2.0
             </label>
-            <input id="chi" type="range" min="0" max="5" step="0.1" value="1" oninput="result()">
+            <input id="chi" type="range" min="0" max="5" step="0.1" value="2" oninput="result()">
         </div>
         <div style="display: grid;">
             <label for="Ps" id="PsText">
-            Spontaneous Polarization: 0 C/m<sup>2</sup>
+            Spontaneous Polarization: 0.00 C/m<sup>2</sup>
             </label>
             <input id="Ps" type="range" min="-0.5" max="0.5" step="0.05" value="0" oninput="result()">
         </div>
     </form>
   </div>
+
+  <p style="text-align: center;" id="PText">P: 0.00 C/m<sup>2</sup> </p>
+  
   <div style="display:flex; flex-wrap: wrap; margin-left: auto; margin-right: auto;">
     <canvas-container>
       <canvas id="electricChart" style="max-width: 380px; height: 300px;"></canvas>
@@ -63,15 +66,15 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="l_TF" id="lText_TF">
-            Length: 100 &#8491;
+            Length: 80 &#8491;
             </label>
-            <input id="l_TF" type="range" min="10" max="500" step="10" value="100" oninput="result_TF()">
+            <input id="l_TF" type="range" min="10" max="500" step="10" value="80" oninput="result_TF()">
         </div>
         <div style="display: grid;">
             <label for="chi_TF" id="chiText_TF">
-            Electric susceptibility: 1
+            Electric susceptibility: 2.0
             </label>
-            <input id="chi_TF" type="range" min="0" max="5" step="0.1" value="1" oninput="result_TF()">
+            <input id="chi_TF" type="range" min="0" max="5" step="0.1" value="2" oninput="result_TF()">
         </div>
         <div style="display: grid;">
             <label for="lambda_TF" id="lambdaText_TF">
@@ -81,12 +84,15 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="Ps_TF" id="PsText_TF">
-            Spontaneous Polarization: 0 C/m<sup>2</sup>
+            Spontaneous Polarization: 0.00 C/m<sup>2</sup>
             </label>
             <input id="Ps_TF" type="range" min="-0.5" max="0.5" step="0.05" value="0" oninput="result_TF()">
         </div>
     </form>
   </div>
+
+  <p style="text-align: center;" id="PText_TF">P: 0.00 C/m<sup>2</sup> </p>
+
   <div style="display:flex; flex-wrap: wrap; margin-left: auto; margin-right: auto;">
     <canvas-container>
       <canvas id="electricChart_TF" style="max-width: 380px; height: 300px;"></canvas>
@@ -113,30 +119,33 @@ Understanding Thin Film Capacitors
         </div>
         <div style="display: grid;">
             <label for="l_series" id="lText_series">
-            Length: 100 &#8491;
+            Length: 70 &#8491;
             </label>
-            <input id="l_series" type="range" min="10" max="500" step="10" value="100" oninput="result_series()">
+            <input id="l_series" type="range" min="10" max="500" step="10" value="70" oninput="result_series()">
         </div>
         <div style="display: grid;">
             <label for="chi_series" id="chiText_series">
-            Electric susceptibility: 1
+            Electric susceptibility: 2.0
             </label>
-            <input id="chi_series" type="range" min="0" max="5" step="0.1" value="1" oninput="result_series()">
+            <input id="chi_series" type="range" min="0" max="5" step="0.1" value="2" oninput="result_series()">
         </div>
         <div style="display: grid;">
             <label for="lambda_series" id="lambdaText_series">
-            effective screening length: 0.5 &#8491;
+            effective screening length: 1.0 &#8491;
             </label>
-            <input id="lambda_series" type="range" min="-3" max="3" step="0.1"  value="0.5" oninput="result_series()">
+            <input id="lambda_series" type="range" min="-5" max="5" step="0.1"  value="1.0" oninput="result_series()">
         </div>
         <div style="display: grid;">
             <label for="Ps_series" id="PsText_series">
-            Spontaneous Polarization: 0 C/m<sup>2</sup>
+            Spontaneous Polarization: 0.00 C/m<sup>2</sup>
             </label>
             <input id="Ps_series" type="range" min="-0.5" max="0.5" step="0.05" value="0" oninput="result_series()">
         </div>
     </form>
   </div>
+
+  <p style="text-align: center;" id="PText_series">P: 0.00 C/m<sup>2</sup> </p>
+
   <div style="display:flex; flex-wrap: wrap; margin-left: auto; margin-right: auto;">
     <canvas-container>
       <canvas id="electricChart_series" style="max-width: 380px; height: 300px;"></canvas>
@@ -156,7 +165,3 @@ Understanding Thin Film Capacitors
 <script src="/js/capacitors_TF.js"></script>
 <script src="/js/capacitors_series.js"></script>
 
-
-
-
-<SpringPhysics withDamping />

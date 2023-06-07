@@ -27,6 +27,7 @@ let lText_TF = document.getElementById("lText_TF");
 let chiText_TF = document.getElementById("chiText_TF");
 let lambdaText_TF = document.getElementById("lambdaText_TF");
 let PsText_TF = document.getElementById("PsText_TF");
+let PText_TF = document.getElementById("PText_TF");
 
 //generate data
 generateData_TF(Number(V_TF), Number(l_TF), Number(chi_TF), Number(lambda_TF), Number(Ps_TF), nData);
@@ -47,9 +48,9 @@ addData(displacementChart_TF,leftElectrode_D_TF);
 addData(displacementChart_TF,insulator_D_TF);
 addData(displacementChart_TF,rightElectrode_D_TF);
 
-electricChart_TF.update('none');
-potentialChart_TF.update('none');
-displacementChart_TF.update('none');
+electricChart_TF.update();
+potentialChart_TF.update();
+displacementChart_TF.update();
 
 function generateData_TF(V, l, chi, lambda, Ps, n = 100) {
   leftElectrode_E_TF.length = 0;
@@ -70,6 +71,7 @@ function generateData_TF(V, l, chi, lambda, Ps, n = 100) {
   a = 2*lambda*(1-Math.exp(-l/lambda));
   D = 1/(a*(1+chi)+l)*((1+chi)*vac_permittivity*V + l*Ps);
   E = 1/(a*(1+chi)+l)*(V - a/vac_permittivity*Ps);
+  let P = chi*E + Ps;
 
   for (let x = x1; x >= i1; x -= (i2 - i1)/n) {
     leftElectrode_E_TF.push({x:x, y: eval(D/vac_permittivity*Math.exp((x+l/2)/lambda))});
@@ -88,6 +90,8 @@ function generateData_TF(V, l, chi, lambda, Ps, n = 100) {
     rightElectrode_V_TF.push({x:x, y: V/2 + eval(-D*lambda/vac_permittivity*Math.exp(-(x-l/2)/lambda))});
     rightElectrode_D_TF.push({x:x, y: eval(D*Math.exp(-(x-l/2)/lambda))});
   }
+
+  return P;
 }
 
 function result_TF(){
@@ -97,17 +101,19 @@ function result_TF(){
   let lambda_TF = document.getElementById("lambda_TF").value;
   let Ps_TF = document.getElementById("Ps_TF").value;
 
+  let P = generateData_TF(Number(V_TF), Number(l_TF), Number(chi_TF), Number(lambda_TF), Number(Ps_TF), nData);
+
   VText_TF.innerHTML = "Voltage: " + V_TF + " V"; 
   lText_TF.innerHTML = "Length: " + l_TF + " \u212B";
-  chiText_TF.innerHTML = "Electric susceptibility: " + chi_TF; 
-  lambdaText_TF.innerHTML = "Thomas-Fermi screening length: " + lambda_TF + " &#8491;"
-  PsText_TF.innerHTML = "Spontaneous Polarization: " + Ps_TF +" C/m<sup>2</sup>";
-  
-  generateData_TF(Number(V_TF), Number(l_TF), Number(chi_TF), Number(lambda_TF), Number(Ps_TF), nData);
-  
-  updateBoxes(electricChart_TF);
-  updateBoxes(potentialChart_TF);
-  updateBoxes(displacementChart_TF);
+  chiText_TF.innerHTML = "Electric susceptibility: " + Number(chi_TF).toFixed(1); 
+  lambdaText_TF.innerHTML = "Thomas-Fermi screening length: " + Number(lambda_TF).toFixed(1) + " &#8491;"
+  PsText_TF.innerHTML = "Spontaneous Polarization: " + Number(Ps_TF).toFixed(2) +" C/m<sup>2</sup>";
+  PText_TF.innerHTML = "P: " + P.toFixed(2) +" C/m<sup>2</sup>";
+
+
+  updateBoxes(electricChart_TF, P);
+  updateBoxes(potentialChart_TF, P);
+  updateBoxes(displacementChart_TF, P);
 
   electricChart_TF.update('none');
   potentialChart_TF.update('none');
