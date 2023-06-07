@@ -35,7 +35,7 @@ let lambdaText_series = document.getElementById("lambdaText_series");
 let PsText_series = document.getElementById("PsText_series");
 
 //generate data
-generateData_TF(Number(V_TF), Number(l_TF), Number(chi_TF), Number(lambda_TF), Number(Ps_TF), nData);
+generateData_series(Number(V_series), Number(l_series), Number(chi_series), Number(lambda_series), Number(Ps_series), nData);
 
 //make charts
 electricChart_series = new Chart(ctx1_series, config("Electric field (V/\u212B)", -0.5, 0.5));
@@ -96,59 +96,6 @@ function generateData_series(V, l, chi, lambda, Ps, n = 100) {
   }
 }
 
-function generatePotentialData_series(V, l, chi, lambda, Ps, n = 100) {
-  leftElectrode_V_series.length = 0;
-  insulator_V_series.length = 0;
-  rightElectrode_V_series.length = 0;
-
-  x1 = -l/2;
-  x2 = l/2;
-  i1 = x1 - electrodeLength;
-  i2 = x2 + electrodeLength;
-  
-  a = 2*lambda*(1-Math.exp(-l/lambda));
-  D = 1/(a*(1+chi)+l)*((1+chi)*vac_permittivity*V + l*Ps);
-  E = 1/(a*(1+chi)+l)*(V - a/vac_permittivity*Ps);
-
-  for (let x = x1; x >= i1; x -= (i2 - i1)/n) {
-    leftElectrode_V_series.push({x:x, y: -V/2 + eval(D*lambda/vac_permittivity*Math.exp((x+l/2)/lambda))});
-  }
-
-  for (let x = x1; x <= x2; x += (i2 - i1)/n) {
-    insulator_V_series.push({x:x, y: -V/2 + eval(D*lambda/vac_permittivity + E*(x + l/2))});
-  }
-
-  for (let x = x2; x <= i2; x += (i2 - i1)/n) {
-    rightElectrode_V_series.push({x:x, y: V/2 + eval(-D*lambda/vac_permittivity*Math.exp(-(x-l/2)/lambda))});
-  }
-}
-
-function generateDisplacementData_series(V, l, chi, lambda, Ps, n = 100) {
-  leftElectrode_D_series.length = 0;
-  insulator_D_series.length = 0;
-  rightElectrode_D_series.length = 0;
-
-  x1 = -l/2;
-  x2 = l/2;
-  i1 = x1 - electrodeLength;
-  i2 = x2 + electrodeLength;
-  
-  a = 2*lambda*(1-Math.exp(-l/lambda));
-  D = 1/(a*(1+chi)+l)*((1+chi)*vac_permittivity*V + l*Ps);
-
-  for (let x = x1; x >= i1; x -= (i2 - i1)/n) {
-    leftElectrode_D_series.push({x:x, y: eval(D*Math.exp((x+l/2)/lambda))});
-  }
-
-  for (let x = x1; x <= x2; x += (i2 - i1)/n) {
-    insulator_D_series.push({x:x, y: D});
-  }
-
-  for (let x = x2; x <= i2; x += (i2 - i1)/n) {
-    rightElectrode_D_series.push({x:x, y: eval(D*Math.exp(-(x-l/2)/lambda))});
-  }
-}
-
 function result_series(){
   let V_series = document.getElementById("V_series").value;
   let l_series = document.getElementById("l_series").value;
@@ -162,8 +109,8 @@ function result_series(){
   lambdaText_series.innerHTML = "Thomas-Fermi screening length: " + lambda_series + " &#8491;"
   PsText_series.innerHTML = "Spontaneous Polarization: " + Ps_series +" C/m<sup>2</sup>";
   
-  generateData_TF(Number(V_TF), Number(l_TF), Number(chi_TF), Number(lambda_TF), Number(Ps_TF), nData);
-  
+  generateData_series(Number(V_series), Number(l_series), Number(chi_series), Number(lambda_series), Number(Ps_series), nData);
+
   updateBoxes(electricChart_series);
   updateBoxes(potentialChart_series);
   updateBoxes(displacementChart_series);
