@@ -6,6 +6,8 @@ date: 2023-06-07
 layout: layouts/post.njk
 ---
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 
@@ -19,7 +21,7 @@ $$
 P = \epsilon_0 \chi \mathcal{E} + P_S
 $$
 
-Where \\(\epsilon_0 \\) is the vacuum permittivity and \\(\chi \\) is the electric susceptibility (dielectric constant - 1). Note that polarization switching of ferroelectrics is not implemented using this equation. You can assume that if polarization deviates much from spontaneous polarization, non-trivial effects such as polarzation switching or the slab losing ferroelectricity will occur.
+Where \\(\epsilon_0 \\) is the vacuum permittivity and \\(\chi \\) is the electric susceptibility (dielectric constant - 1). Note that polarization switching of ferroelectrics is not implemented using this equation. You can assume that if polarization deviates much from spontaneous polarization, non-linear effects such as polarzation switching or the slab losing ferroelectricity will occur.
 
 <play-ground>
   <divs>
@@ -55,13 +57,13 @@ Where \\(\epsilon_0 \\) is the vacuum permittivity and \\(\chi \\) is the electr
   
   <div style="display:flex; flex-wrap: wrap; margin-left: auto; margin-right: auto;">
     <canvas-container>
-      <canvas id="electricChart"  style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="electricChart"  style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
     <canvas-container>
-      <canvas id="potentialChart" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="potentialChart" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
     <canvas-container>
-      <canvas id="displacementChart" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="displacementChart" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
   </div>
 </play-ground>
@@ -117,13 +119,13 @@ Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for
 
   <div style="display:flex; flex-wrap: wrap; margin-left: auto; margin-right: auto;">
     <canvas-container>
-      <canvas id="electricChart_TF" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="electricChart_TF" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
     <canvas-container>
-      <canvas id="potentialChart_TF" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="potentialChart_TF" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
     <canvas-container>
-      <canvas id="displacementChart_TF" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="displacementChart_TF" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
   </div>
 </play-ground>
@@ -172,13 +174,13 @@ Modern interpretation of the depolarzation field is through the "series capacita
 
   <div style="display:flex; flex-wrap: wrap; margin-left: auto; margin-right: auto;">
     <canvas-container>
-      <canvas id="electricChart_series" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="electricChart_series" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
     <canvas-container>
-      <canvas id="potentialChart_series" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="potentialChart_series" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
     <canvas-container>
-      <canvas id="displacementChart_series" style="max-width: 380px; height: 300px;"></canvas>
+      <canvas id="displacementChart_series" style="max-width: 320px; height: 300px;"></canvas>
     </canvas-container>
   </div>
 </play-ground>
