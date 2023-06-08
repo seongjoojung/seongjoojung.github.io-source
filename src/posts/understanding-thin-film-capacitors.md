@@ -11,7 +11,7 @@ layout: layouts/post.njk
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 
-When you work with thin film capacitors, something you cannot ignore is the presense of depolarization field - field that arises from the electric dipole and act against polarization. In my recent manuscript, there is an observation of diminishing spontaneous polarization of ferroelectric capacitor as the insulator gets shorter from first principles. Here I'd like to introduce some scientific backgrounds of the depolarization fields arising in thin film geometry, with some interactive examples.
+When you work with thin film capacitors, something you cannot ignore is the presense of depolarization field - field that arises from the electric dipole and act against polarization. <a href="https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa">In my recent manuscript</a>, there is an observation of diminishing spontaneous polarization of ferroelectric capacitor as the insulator gets shorter from first principles. Here I'd like to introduce some scientific backgrounds of the depolarization fields arising in thin film geometry, with some interactive examples.
 
 Depolarization fields occur in all polarized materials, when there is separation of bound charges in the material. When a material is exposed to electric field in free space, the internal electric field inside material is external electric field plus the depolarization field. In ideal capacitor settings, the free charges induced at the electrode interface should screen the bound charges, and any depolarization field should be suppressed from arising.
 
