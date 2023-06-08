@@ -11,17 +11,17 @@ layout: layouts/post.njk
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 
-When you work with thin film capacitors, something you cannot ignore is the presense of depolarization field - field that arises from the electric dipole and act against polarization. <a href="https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa">In my recent manuscript</a>, there is an observation of diminishing spontaneous polarization of ferroelectric capacitor as the insulator gets shorter from first principles. Here I'd like to introduce some scientific backgrounds of the depolarization fields arising in thin film geometry, with some interactive examples.
+When you work with thin film capacitors, something you cannot ignore is the presence of the depolarization field - the field that arises from the electric dipole and acts against polarization. <a href="https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa">In my recent manuscript</a>, there is an observation of diminishing spontaneous polarization of ferroelectric capacitors as the insulator gets shorter from the first principles. Here I'd like to introduce some scientific backgrounds of the depolarization fields arising in thin film geometry, with some interactive examples.
 
-Depolarization fields occur in all polarized materials, when there is separation of bound charges in the material. When a material is exposed to electric field in free space, the internal electric field inside material is external electric field plus the depolarization field. In ideal capacitor settings, the free charges induced at the electrode interface should screen the bound charges, and any depolarization field should be suppressed from arising.
+Depolarization fields occur in all polarized materials when there is separation of bound charges in the material. When a material is exposed to an electric field in free space, the internal electric field inside the material is the external electric field plus the depolarization field. In ideal capacitor settings, the free charges induced at the electrode interface should screen the bound charges, and any depolarization field should be suppressed from arising.
 
-Here is an interactive example of ideal capacitor, where all no depolarization field occurs. You can charge it by applying voltage, and set length and electric susceptibility of the insulator. The color of the insulator will indicate how positively (red) or negatively (blue) polarized the insulator is. You can also make the insulator ferroelectric, by setting spontaneous polarization of it. It assumes basic linear relationship between polarization \\(P \\) and electric field \\( \mathcal{E} \\)
+Here is an interactive example of an ideal capacitor, where no depolarization field occurs. You can charge it by applying voltage and setting the length and electric susceptibility of the insulator. The color of the insulator will indicate how positively (red) or negatively (blue) polarized the insulator is. You can also make the insulator ferroelectric, by setting spontaneous polarization of it. It assumes a basic linear relationship between polarization \\(P \\) and electric field \\( \mathcal{E} \\). 
 
 $$
 P = \epsilon_0 \chi \mathcal{E} + P_S
 $$
 
-Where \\(\epsilon_0 \\) is the vacuum permittivity and \\(\chi \\) is the electric susceptibility (dielectric constant - 1). Note that polarization switching of ferroelectrics is not implemented using this equation. You can assume that if polarization deviates much from spontaneous polarization, non-linear effects such as polarzation switching or the slab losing ferroelectricity will occur.
+Where \\(\epsilon_0 \\) is the vacuum permittivity and \\(\chi \\) is the electric susceptibility (dielectric constant - 1). Note that polarization switching of ferroelectrics is not implemented using this equation. You can assume that if polarization deviates much from spontaneous polarization, non-linear effects such as polarization switching or the slab losing ferroelectricity will occur.
 
 <play-ground>
   <divs>
@@ -68,16 +68,16 @@ Where \\(\epsilon_0 \\) is the vacuum permittivity and \\(\chi \\) is the electr
   </div>
 </play-ground>
 
-The difference between displacement field between to points in space indicate how much free charge there is in the space between. In other words, all free charges are concentrated in the interface of the insulator and the electrode in ideal capacitors.
+The difference between the displacement field between two points in space indicates how much free charge there is in the space between. In other words, all free charges are concentrated in the interface of the insulator and the electrode in ideal capacitors.
 
-However, as studies developed for thin-film capacitors, the presense of depolarization fields were discovered which could not be explained from ideal capacitor model. One of the first studies from Mehta et al. (<a href="https://pubs.aip.org/aip/jap/article-abstract/44/8/3379/6486/Depolarization-fields-in-thin-ferroelectric-films?redirectedFrom=fulltext">Mehta et al. (1973). <i>Journal of Applied Physics</i>, 44(8), 3379-3385.</a>) explains it using a finite, Thomas-Fermi like charge screening lengths of electrodes. Instead of all the free charges being concentrated at the interface, they are distributed within a short range at the interface. With a single-band approximation of conductors, electric field profile of 1-D metal can be expressed as a second order ODE:
+However, as studies developed for thin-film capacitors, the presence of depolarization fields was discovered which could not be explained by the ideal capacitor model. One of the first studies from Mehta et al. (<a href="https://pubs.aip.org/aip/jap/article-abstract/44/8/3379/6486/Depolarization-fields-in-thin-ferroelectric-films?redirectedFrom=fulltext">Mehta et al. (1973). <i>Journal of Applied Physics</i>, 44(8), 3379-3385.</a>) explains it using finite, Thomas-Fermi-like charge screening lengths of electrodes. Instead of all the free charges being concentrated at the interface, they are distributed within a short range at the interface. With a single-band approximation of conductors, the electric field profile of 1-D metal can be expressed as a second-order ODE:
 
 $$
 \require{physics}
 \dv[2]{\mathcal{E}}{x} = \frac{1}{\lambda^2}\mathcal{E}
 $$
 
-Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for the screening length of coinage metals is ~0.5 &#8491;. Due to this finite length, a non-zero electric field arises in the electrodes near the interface with the presense of free charges. Thus if the insulator is ferroelectric, even though there is zero potential difference between the electrodes, depolarizing electric field arises in the insulator.
+Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for the screening length of coinage metals is ~0.5 &#8491;. Due to this finite length, a non-zero electric field arises in the electrodes near the interface with the presence of free charges. Thus if the insulator is ferroelectric, even though there is zero potential difference between the electrodes, depolarizing electric field arises in the insulator.
 
 <play-ground>
   <divs>
@@ -130,9 +130,9 @@ Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for
   </div>
 </play-ground>
 
-But there are few limitations of this model. Most importantly, the Thomas-Fermi screening length is only a property of the metal and ignores metal-insulator interaction at the interface. Also, the single band assumption is not valud for most conductors, making analytical value unobtainable.
+But there are a few limitations of this model. Most importantly, the Thomas-Fermi screening length is only a property of the metal and ignores metal-insulator interaction at the interface. Also, the single-band assumption is not valid for most conductors, making analytical value unobtainable.
 
-Modern interpretation of the depolarzation field is through the "series capacitance" model. "Interface capacitance" arises from the interaction of atoms at the interface, thus even though there is one capacitor with two electrodes and one insulator, it should be viewed instead as series of three capacitors in series, with two interface capacitors. (<a href="https://www.nature.com/articles/nmat2429">Stengel et al., (2009). <i>Nature materials</i>, 8(5), 392-397.</a>) Treating interface capacitance as a thin vacuum layer yields an effective screening length at the interface.
+The modern interpretation of the depolarization field is through the "series capacitance" model. "Interface capacitance" arises from the interaction of atoms at the interface, thus even though there is one capacitor with two electrodes and one insulator, it should be viewed instead as a series of three capacitors in series, with two interface capacitors. (<a href="https://www.nature.com/articles/nmat2429">Stengel et al., (2009). <i>Nature materials</i>, 8(5), 392-397.</a>) Treating interface capacitance as a thin vacuum layer yields an effective screening length at the interface.
 
 <play-ground>
   <divs>
