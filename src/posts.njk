@@ -4,6 +4,7 @@ layout: layouts/base.njk
 ---
 
 <div> 
+    <h2> Archive</h2>
     {% for post in collections.post | reverse %}
         <h3 style="display: inline;">{{ post.data.title }}</h3>
         <p style="display: inline;" class="date">
