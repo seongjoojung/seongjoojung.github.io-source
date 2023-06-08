@@ -77,7 +77,7 @@ $$
 \dv[2]{\mathcal{E}}{x} = \frac{1}{\lambda^2}\mathcal{E}
 $$
 
-Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for the screening length of coinage metals is ~0.5 &#8491;. Due to this finite length, a non-zero electric field arises in the electrodes near the interface with the presence of free charges. Thus if the insulator is ferroelectric, even though there is zero potential difference between the electrodes, depolarizing electric field arises in the insulator. You can observe this effect diminishing for either low \\(\lambda \\), or long insulator length. 
+Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for the screening length of coinage metals is ~0.5 &#8491;. Due to this finite length, a non-zero electric field arises in the electrodes near the interface with the presence of free charges. It is intuitive to think that this electric field in the electrode hinders free charge screening of bound charges. Thus if the insulator is ferroelectric, even though there is zero potential difference between the electrodes, depolarizing electric field arises in the insulator because of incomplete screening of the bound charges. Of course, this effect is only noticeable when \\(\lambda \\) is non-negligible compared to length of the insulator. You can observe this effect diminishing for either low \\(\lambda \\), or long insulator length.
 
 <play-ground>
   <divs>
