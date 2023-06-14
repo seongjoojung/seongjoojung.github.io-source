@@ -132,7 +132,7 @@ Where \\(\lambda \\) is the Thomas-Fermi screening length. Analytical values for
 
 But there are a few limitations of this model. Most importantly, the Thomas-Fermi screening length is only a property of the metal and ignores metal-insulator interaction at the interface. Also, the single-band assumption is not valid for most conductors, making analytical value unobtainable.
 
-The modern interpretation of the depolarization field is through the "series capacitance" model. "Interface capacitance" arises from the interaction of atoms at the interface, thus even though there is one capacitor with two electrodes and one insulator, it should be viewed instead as a series of three capacitors in series, with two interface capacitors. (<a href="https://www.nature.com/articles/nmat2429">Stengel et al., (2009). <i>Nature materials</i>, 8(5), 392-397.</a>) Treating interface capacitance as a thin vacuum layer yields an effective screening length at the interface.
+The modern interpretation of the depolarization field is through the "series capacitance" model. "Interface capacitance" arises from the interaction of atoms at the interface, thus even though there is one capacitor with two electrodes and one insulator, it should be viewed instead as three capacitors in series, with two interface capacitors. (<a href="https://www.nature.com/articles/nmat2429">Stengel et al., (2009). <i>Nature materials</i>, 8(5), 392-397.</a>) Treating interface capacitance as a thin vacuum layer yields an effective screening length at the interface.
 
 <play-ground>
   <divs>
