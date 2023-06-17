@@ -139,7 +139,7 @@ LFIX_XY   = .TRUE.
  NCORE = 8
 </code></pre>
 
-Not that positive value of `SCALING` is used, which will simulate negative electric field. Because PbTiO<sub>3</sub> is ferroelectric, it will induce positive polarization.
+Note that positive value of `SCALING` is used, which will simulate negative electric field. Because PbTiO<sub>3</sub> is ferroelectric, it will induce positive polarization.
 
 For your `POSCAR`, you cannot use the `CONTCAR` of your non-polar structure without setting `ISYM=0`. But since we know that the polarized PbTiO<sub>3</sub> is space group P4mm, we'll circumvent this by altering the `POSCAR` a little bit. In general, it is always good to compare your calculation with a trial calculation of `ISYM=0`.
 
