@@ -1,14 +1,14 @@
 ---
 title: 'VASP Force Correction Patch: Tutorial'
-description: How to use the force correction patch for VASP to simulate materials under constant electric field
+description: How to use the force correction patch for VASP to simulate materials under constant electric field (Basics)
 tags: post
 date: 2023-06-17
 layout: layouts/post.njk
 ---
 
-In this post, I'll explain how to use the constrained forces method using the [force correction patch](https://github.com/seongjoojung/VASP-force-correction-patch) in my github to simulate constant electric field. Explanation on the background of this method can be found in my [recent manuscript](https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa).
+In this post, I'll explain how to use the constrained forces method in VASP to simulate constant electric field using the [force correction patch](https://github.com/seongjoojung/VASP-force-correction-patch) from my github. Explanation on the background of this method can be found in my [recent manuscript](https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa).
 
-First, you need to calculate the Born effective charge tensor of your non-polar structure. For example, the non-polar structure of lead titanate would have following structure in space group 123 (P4/mmm). 
+First, you need to calculate the Born effective charge tensor of your non-polar structure. For example, the non-polar structure of lead titanate would have following structure (space group 123, P4/mmm). 
 
 `CONTCAR:`
 <pre>
@@ -27,7 +27,7 @@ Direct
   0.5000000000000000  0.0000000000000000  0.5000000000000000
 </code></pre>
 
-Here I've imposed constant strain condition in the lateral direction, so that it has same lattice parameter a as its ground state (space group 99, P4mm). After you obtain the opimized structure of your non-polar system, you need to calculate the Born effective charge tensor using either `LEPSILON` or `LCALCEPS` tag. It is ideal to pair this calculation with second-derivative calculations using `IBRION=6` or `IBRION=8`, as the phonon calculation at the Gamma point provides useful informations.
+Here I've imposed constant strain condition in the lateral direction, so that it has same lattice parameter a as its ground state (space group 99, P4mm). This is optional. After you obtain the opimized structure of your non-polar system, you need to calculate the Born effective charge tensor using either `LEPSILON` or `LCALCEPS` tag. It is ideal to pair this calculation with second-derivative calculations using `IBRION=6` or `IBRION=8`, as the phonon calculation at the Gamma point provides useful informations.
 
 `INCAR:`
 <pre>
