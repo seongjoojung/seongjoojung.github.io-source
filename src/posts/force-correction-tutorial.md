@@ -8,9 +8,8 @@ layout: layouts/post.njk
 
 In this post, I'll explain how to use the constrained forces method in VASP to simulate constant electric field using the [force correction patch](https://github.com/seongjoojung/VASP-force-correction-patch) from my github. Explanation on the background of this method can be found in my [recent manuscript](https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa).
 
-First, you need to calculate the Born effective charge tensor of your non-polar structure. For example, the non-polar structure of lead titanate would have following structure (space group 123, P4/mmm). 
+First, you need to calculate the Born effective charge tensor of your non-polar structure. For example, the non-polar structure of lead titanate would have following `CONTCAR:` (space group 123, P4/mmm)
 
-`CONTCAR:`
 <pre>
 <code>PbTiO3
    1.00000000000000
@@ -27,7 +26,7 @@ Direct
   0.5000000000000000  0.0000000000000000  0.5000000000000000
 </code></pre>
 
-Here I've imposed constant strain condition in the lateral direction, so that it has same lattice parameter a as its ground state (space group 99, P4mm). This is optional. After you obtain the opimized structure of your non-polar system, you need to calculate the Born effective charge tensor using either `LEPSILON` or `LCALCEPS` tag. It is ideal to pair this calculation with second-derivative calculations using `IBRION=6` or `IBRION=8`, as the phonon calculation at the Gamma point provides useful informations.
+Here, I've imposed constant strain condition in the lateral direction, so that it has same lattice parameter a as its ground state (space group 99, P4mm). After you obtain the optimized structure of your non-polar system, you need to calculate the Born effective charge tensor using either `LEPSILON` or `LCALCEPS` tag. It is ideal to pair this calculation with second-derivative calculations using `IBRION=6` or `IBRION=8`, as the phonon calculation at the Gamma point provides useful informations.
 
 `INCAR:`
 <pre>
@@ -88,7 +87,7 @@ The Born effective charge tensor appears in `OUTCAR` file as following:
     3     0.00000    -0.00000    -2.56131
 </code></pre>
 
-Using this, we can not set the `FORCES_Z` tag in the `INCAR` for contrained-forces calculations. To apply electric field in the z direction, you only need the `FORCES_Z` tag as only the diagonal componenets in the Born effective charge tensor is present.
+Using this, we can now set the `FORCES_Z` tag in the `INCAR` for contrained-forces calculations. To apply electric field in the z direction, you only need the `FORCES_Z` tag as only the diagonal componenets in the Born effective charge tensor is present.
 
 We'll start by inducing small polarization to the non-polar structure. 
 
@@ -139,9 +138,9 @@ LFIX_XY   = .TRUE.
  NCORE = 8
 </code></pre>
 
-Note that positive value of `SCALING` is used, which will simulate negative electric field. Because PbTiO<sub>3</sub> is ferroelectric, it will induce positive polarization.
+Note that positive value of `SCALING` is used, which will simulate negative electric field. Because PbTiO<sub>3</sub> is ferroelectric (and it is in the "negative capacitance" region), it will induce structure with positive polarization and lower energy, compared to your non-polar structure.
 
-For your `POSCAR`, you cannot use the `CONTCAR` of your non-polar structure without setting `ISYM=0`. But since we know that the polarized PbTiO<sub>3</sub> is space group P4mm, we'll circumvent this by altering the `POSCAR` a little bit. In general, it is always good to compare your calculation with a trial calculation of `ISYM=0`.
+For your `POSCAR`, you cannot use the `CONTCAR` of your non-polar structure without setting `ISYM=0`. But since we know that the space group of the polarized PbTiO<sub>3</sub> is P4mm, we'll circumvent this by altering the `POSCAR` a little bit. In general, it is always good to compare your calculation with a trial calculation of `ISYM=0`.
 
 `POSCAR:`
 <pre>
