@@ -10,6 +10,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/js/");
     eleventyConfig.addWatchTarget("./src/js/");
 
+    eleventyConfig.addPassthroughCopy("./src/favicons/");
+
     eleventyConfig.addFilter('readableDate', (dateObj) => {
         return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
           'DDD'
