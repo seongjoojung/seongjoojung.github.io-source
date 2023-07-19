@@ -12,7 +12,7 @@ This post will demonstrate how to correctly calculate ionic contribution to perm
 The ionic contribution to permittivity can be calculated using normal mode charges or mode oscillator strength. The first ingredient to calculating it is the "eigendisplacements" \\(U \\), which differ from eigenvectors of dynamical matrix (the eigenvectors of the dynamical matrix are called the mass-weighted normal modes) by a factor of square root of atomic weights. Exact definition of \\(U \\) is eq. (12) of GL.
 
 <pre>
-<code>proton_mass = 1.673*10**-27  #kg
+<code class="language-python">proton_mass = 1.673*10**-27  #kg
 
 U = eigenvectors/(np.sqrt(proton_mass*atomic_weight)) #kg^-1/2
 </code></pre>
@@ -90,7 +90,7 @@ The zero criterion for each values is read as input. You can first set it to 0 t
 As an example, ionic permittivity of P4/mmm SrTiO\\(_3\\) at -2% epitaxial strain is calculated as following using `LEPSILON` tag in VASP:
 
 <pre>
-<code> MACROSCOPIC STATIC DIELECTRIC TENSOR IONIC CONTRIBUTION
+<code class="language-plaintext"> MACROSCOPIC STATIC DIELECTRIC TENSOR IONIC CONTRIBUTION
  -------------------------------------
          286.533    -0.000     0.000
           -0.000   286.532     0.000
@@ -110,3 +110,4 @@ You can confirm that for the directions without imaginary phonon, the ionic cont
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+

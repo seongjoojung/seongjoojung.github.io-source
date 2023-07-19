@@ -63,7 +63,7 @@ LASPH = .TRUE.
 
 The Born effective charge tensor appears in `OUTCAR` file as following:
 <pre>
-<code> BORN EFFECTIVE CHARGES (in e, cummulative output)
+<code class="language-plaintext"> BORN EFFECTIVE CHARGES (in e, cummulative output)
  -------------------------------------------------
  ion    1
     1     3.89297     0.00000     0.00000
@@ -144,7 +144,7 @@ For your `POSCAR`, you cannot use the `CONTCAR` of your non-polar structure with
 
 `POSCAR:`
 <pre>
-<code>PbTiO3
+<code class="language-plaintext">PbTiO3
    1.00000000000000
      3.9064260257101253    0.0000000000000000    0.0000000000000000
      0.0000000000000000    3.9064260257101253    0.0000000000000002
@@ -162,7 +162,7 @@ Direct
 After you converge your calculation, you can check the forces of your structure in the `OUTCAR`:
 
 <pre>
-<code> POSITION                                       TOTAL-FORCE (eV/Angst)
+<code class="language-plaintext"> POSITION                                       TOTAL-FORCE (eV/Angst)
  -----------------------------------------------------------------------------------
       0.00000      0.00000      3.97466         0.000000      0.000000      0.003863
       1.95321      1.95321      1.98860         0.000000      0.000000      0.007021
