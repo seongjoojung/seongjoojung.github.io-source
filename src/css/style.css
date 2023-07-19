@@ -120,8 +120,6 @@ img {
 }
 
 footer {
-    
-    width: 100%;
     background-color: #333;
     color: #fff;
     padding: 20px;
@@ -135,9 +133,13 @@ form {
 }
 
 pre {
-    background-color: #ccc;
+    background-color: #ddd;
     overflow-x: scroll;
     padding: 1.125em;
+}
+
+code {
+    background-color: #ddd;
 }
 
 
