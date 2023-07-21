@@ -4,6 +4,8 @@ description: The first post of my blog
 tags: post
 date: 2023-05-31
 layout: layouts/post.njk
+card: summary
+image: https://seongjoojung.github.io/favicons/fav.png
 ---
 
 This is the first post of the blog, which I hope to keep up and use it to communicate.

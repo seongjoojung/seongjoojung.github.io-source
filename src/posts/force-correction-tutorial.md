@@ -4,6 +4,8 @@ description: How to use the force correction patch for VASP to simulate material
 tags: post
 date: 2023-06-17
 layout: layouts/post.njk
+card: summary
+image: https://seongjoojung.github.io/favicons/fav.png
 ---
 
 In this post, I'll explain how to use the constrained forces method in VASP to simulate constant electric field using the [force correction patch](https://github.com/seongjoojung/VASP-force-correction-patch) from my github. Explanation on the background of this method can be found in my [recent manuscript](https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa).

@@ -4,10 +4,9 @@ description: Interactive explanation about depolarization fields in capacitors
 tags: post
 date: 2023-06-07
 layout: layouts/post.njk
-image: /images/understanding-thin-film-capacitors.png
+card: summary_large_image
+image: image: https://seongjoojung.github.io//images/understanding-thin-film-capacitors.png
 ---
-
-
 
 When you work with thin film capacitors, you cannot ignore the presence of the depolarization field - the field that arises from the electric dipole and acts against polarization. <a href="https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa">In my recent manuscript</a>, there is an observation of diminishing spontaneous polarization of ferroelectric capacitors as the insulator gets shorter from the first principles. Here I'd like to introduce some scientific backgrounds of the depolarization fields arising in thin film geometry, with some interactive examples.
 
