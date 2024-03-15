@@ -10,7 +10,7 @@ image: https://seongjoojung.github.io/favicons/fav.png
 
 In this post, I'll explain how to use the constrained forces method in VASP to simulate constant electric field using the [force correction patch](https://github.com/seongjoojung/VASP-force-correction-patch) from my github. Explanation on the background of this method can be found in my [recent manuscript](https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa).
 
-First, you need to calculate the Born effective charge tensor of your non-polar structure. For example, the non-polar structure of lead titanate would have following `CONTCAR:` (space group 123, P4/mmm)
+First, you need to calculate the Born effective charge tensor of your non-polar structure. For example, the non-polar structure of lead titanate would have following `CONTCAR:` (space group #123, P4/mmm)
 
 <pre>
 <code>PbTiO3
