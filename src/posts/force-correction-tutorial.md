@@ -1,6 +1,6 @@
 ---
 title: 'VASP Force Correction Patch: Tutorial'
-description: How to use the force correction patch for VASP to simulate materials under constant electric field (Basics)
+description: How to use the force correction patch for VASP to simulate materials under constant electric field
 tags: post
 date: 2023-06-17
 layout: layouts/post.njk
