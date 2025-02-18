@@ -1,11 +1,12 @@
 ---
-title: Normal Mode Charges, Mode Oscillator Strengths and Ionic Contributions to Dielectric Constant
+title: Normal mode charges, mode oscillator strengths and ionic contributions to dielectric constant
 description: Practical guide to calculating them using the dynamical matrix and Born effective charges
 tags: post
 date: 2023-07-19
 layout: layouts/post.njk
 card: summary
 image: https://seongjoojung.github.io/favicons/fav.png
+featured: true
 ---
 
 This post will demonstrate how to correctly calculate ionic contribution to permittivity (dielectric constant) from Born effective charges and dynamical matrices using DFT (and DFPT). VASP is supposed to be able to calculate this using `LEPSILON` (DFPT) tag, but it fails to calculate it correctly when there is an imaginary phonon at the Gamma point. The derivations can be found in [Gonze and Lee (1997) *Phys. Rev. B* 55, 10355](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.10355) (GL) and its citations. You can find the Python script [in my GitHub](https://github.com/seongjoojung/VASP-scripts/blob/main/ionic_permittivity.py).
@@ -109,6 +110,4 @@ If you use the python script to calculate it properly, you get `permittivity_ion
 
 You can confirm that for the directions without imaginary phonon, the ionic contribution is calculated properly but not for the direction with imaginary phonon.
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 

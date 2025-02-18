@@ -1,11 +1,12 @@
 ---
-title: Understanding Thin Film (Ferroelectric) Capacitors
+title: Understanding thin film (ferroelectric) capacitors
 description: Interactive explanation about depolarization fields in capacitors
 tags: post
 date: 2023-06-07
 layout: layouts/post.njk
 card: summary_large_image
 image: https://seongjoojung.github.io/images/understanding-thin-film-capacitors.png
+featured: true
 ---
 
 When you work with thin film capacitors, you cannot ignore the presence of the depolarization field - the field that arises from the electric dipole and acts against polarization. <a href="https://chemrxiv.org/engage/chemrxiv/article-details/63fd7308897b18336f3a59aa">In my recent manuscript</a>, there is an observation of diminishing spontaneous polarization of ferroelectric capacitors as the insulator gets shorter from the first principles. Here I'd like to introduce some scientific backgrounds of the depolarization fields arising in thin film geometry, with some interactive examples.
@@ -192,8 +193,6 @@ You should notice the similarities and differences between the Thomas-Fermi scre
 
 The existance of the depolarization fields, along with [Volta potentials](https://en.wikipedia.org/wiki/Volta_potential), can strongly affect your DFT calculation with thin slabs of insulator. What has been observed in my calculation of Pt/PbTiO<sub>3</sub>/Pt system is that the properties of the electrode (the catalyst) does not depend on the spontaneous polarization of the slab, but only on the polarization of the underlying support.
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <script src="/js/capacitors.js"></script>

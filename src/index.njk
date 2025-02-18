@@ -14,15 +14,12 @@ image: https://seongjoojung.github.io/favicons/fav.png
     <h2>Featured posts</h2>
     <div> 
         {% for post in collections.post | reverse %}
-            {% if (loop.index0 == 1) or (loop.index0 == 3) or (loop.index0 == 4) %}
-                <h3 style="display: inline;">{{ post.data.title }}</h3>
-                <p style="display: inline;" class="date">
-                    &nbsp; <time datetime="{{ page.date }}">{{ post.data.date | readableDate }}</time>
+            {% if (post.data.featured) %}
+                <h3 style="display: inline;"><a href="{{ post.url }}" style="text-decoration:none; color: inherit;">{{ post.data.title }}</a> </h3>
+                <p style="display: inline; margin-top:3px; margin-bottom:6px;" class="date">
+                    &nbsp; <time datetime="{{ page.date }}"><nobr>{{ post.data.date | readableDate }}</nobr></time>
                 </p>
-                <p style="margin-top:6px; margin-bottom:6px;">{{ post.data.description }}</p>
-                <a href="{{ post.url }}">Read more</a>  
-                <br>
-                <br>
+                <p class="description">{{ post.data.description }}</p>
             {% endif %}
         {% endfor %}
     </div>

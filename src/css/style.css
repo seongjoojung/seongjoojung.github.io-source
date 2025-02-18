@@ -205,3 +205,11 @@ play-ground{
     border-color: #555;
     border-radius: 15px;
 }
+
+.description {
+    font-size: 16px;
+    color: #333;
+    margin-top:3px;
+    margin-bottom:24px;
+    margin-left:20px;
+}

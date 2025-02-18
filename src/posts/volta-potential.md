@@ -1,11 +1,12 @@
 ---
-title: Visualizing the Volta Potential in DFT calculations
+title: Visualizing the Volta potential in DFT calculations
 description: Seeing the unseen, speaking the unspoken and transferring charges across vacuum
 tags: post
 date: 2023-10-10
 layout: layouts/post.njk
 card: summary_large_image
 image: https://seongjoojung.github.io/images/volta-potential/thumbnail.png
+featured: true
 ---
 
 Let's talk about the [Volta potential](https://en.wikipedia.org/wiki/Volta_potential). Users of quantum mechanical simulations such as density functional theory - including myself - often overlook "classical" thinking of the electrostatic field. In most of the finite-sized or continuous boundary calculations, the local electric field (defined as the negative gradient of electric potential) does not mean much. The electric potential changes rapidly near ions and electrons densities, and the total field averages to zero. But that may not be true if your system is asymmetrically charged. And having two different conductors in your system can easily make your system asymmetrically charged.
@@ -103,5 +104,3 @@ The Bader charges correspond to 0.010 electrons transferred from the Cu slab to 
 
 The existance of the Volta potential calls for a careful analysis of electric fields in the system for DFT systems with two asymmetric electrodes, as it will tend to polarize inner material severely. It is one of the examples where limitations of calculations have to be considered regarding correspondance of DFT and experiments, like the [band alignment at the metal-insulator interface](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.83.235112).
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
